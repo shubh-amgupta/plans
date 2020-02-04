@@ -28,7 +28,7 @@ let pricingData = [
                 totalQualifiedLeadPrice: "$2,680",
                 totalPlatformPrice: "$599",
                 finalPrice: "$3,279",
-                isPopular: false
+                isPopular: true
             },
             {
                 planId: 3,
@@ -38,7 +38,7 @@ let pricingData = [
                 totalQualifiedLeadPrice: "$3,900",
                 totalPlatformPrice: "$699",
                 finalPrice: "$4,599",
-                isPopular: true
+                isPopular: false
             },
             {
                 planId: 4,
@@ -56,7 +56,7 @@ let pricingData = [
         pricePoint: "$200K-$300K",
         priceId: 2,
         active: false,
-        showEnterprise: true,
+        showEnterprise: false,
         plans: [
             {
                 planId: 5,
@@ -78,16 +78,16 @@ let pricingData = [
                 finalPrice: "$3,679",
                 isPopular: true
             },
-            // {
-            //     planId: 7,
-            //     planName: "Qualified 60",
-            //     leadsPerMonth: "60",
-            //     pricePerLiveTransfer: "$74",
-            //     totalQualifiedLeadPrice: "$4,440",
-            //     totalPlatformPrice: "$699",
-            //     finalPrice: "$5,139",
-            //     isPopular: false
-            // },
+            {
+                planId: 7,
+                planName: "Qualified 60",
+                leadsPerMonth: "60",
+                pricePerLiveTransfer: "$74",
+                totalQualifiedLeadPrice: "$4,440",
+                totalPlatformPrice: "$699",
+                finalPrice: "$5,139",
+                isPopular: false
+            },
             {
                 planId: 8,
                 planName: "Qualified 80",
@@ -210,7 +210,7 @@ let pricingData = [
                 totalQualifiedLeadPrice: "$5,000",
                 totalPlatformPrice: "$599",
                 finalPrice: "$5,599",
-                isPopular: false
+                isPopular: true
             },
             {
                 planId: 20,
@@ -226,14 +226,18 @@ let pricingData = [
     }
 ]
 
-
+/**
+ * this component renders the pricing and plans data
+ */
 export default function Pricing() {
 
+    // intialize variable we need
     const [plans, setPlans] = useState(pricingData);
     const [showModal, setModalStatus] = useState(false);
     const [plan, selectPlan] = useState(null);
 
-    function changeActive(id) {
+    // this method changes active pricing
+    function changeActivePricing(id) {
         setPlans(plans.map(item => {
             if(item.priceId === id) {
                 item.active = true;
@@ -244,8 +248,11 @@ export default function Pricing() {
         }));
     }
 
+    // initialize plans
     let selectedPlans = [];
     let showEnterprise = false;
+
+    // get plans for selected pricing
     plans.forEach(item => {
         if(item.active) {
             selectedPlans = item.plans;
@@ -253,11 +260,13 @@ export default function Pricing() {
         }
     });
 
+    // display pricing modal
     function showPricingModal(plan) {
         selectPlan(plan);
         setModalStatus(true);
     }
 
+    // hide pricing modal
     function hidePricingModal() {
         selectPlan(null);
         setModalStatus(false);
@@ -265,7 +274,7 @@ export default function Pricing() {
 
     return (
         <div className="container">
-            <PricingList list={plans} changeActive={changeActive} />
+            <PricingList list={plans} changeActivePricing={changeActivePricing} />
             <PricingCardList showEnterprise={showEnterprise} list={selectedPlans} showPricingModal={showPricingModal} />
             <PricingForm showModal={showModal} selectedPlan={plan} hidePricingModal={hidePricingModal} />
         </div>

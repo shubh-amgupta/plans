@@ -12,6 +12,9 @@ html, body {
 .container {
     padding: 5rem;
 
+    @media (max-width: 900px) {
+        padding: 3rem;
+    }
     @media (max-width: 667px) {
         padding: 2rem;
     }

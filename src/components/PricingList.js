@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PricingList({ list, changeActive }) {
+export default function PricingList({ list, changeActivePricing }) {
     return (
         <div className="list">
             {
@@ -9,7 +9,7 @@ export default function PricingList({ list, changeActive }) {
                     return <div 
                             key={idx}
                             className={classes}
-                            onClick={() => changeActive(item.priceId)}>
+                            onClick={() => changeActivePricing(item.priceId)}>
                                 {item.pricePoint}
                             </div>
                 })
