@@ -8,6 +8,7 @@ let pricingData = [
         pricePoint: "$100K-$200K",
         priceId: 1,
         active: false,
+        showEnterprise: false,
         plans: [
             {
                 planId: 1,
@@ -29,16 +30,16 @@ let pricingData = [
                 finalPrice: "$3,279",
                 isPopular: false
             },
-            // {
-            //     planId: 3,
-            //     planName: "Qualified 60",
-            //     leadsPerMonth: "60",
-            //     pricePerLiveTransfer: "$65",
-            //     totalQualifiedLeadPrice: "$3,900",
-            //     totalPlatformPrice: "$699",
-            //     finalPrice: "$4,599",
-            //     isPopular: true
-            // },
+            {
+                planId: 3,
+                planName: "Qualified 60",
+                leadsPerMonth: "60",
+                pricePerLiveTransfer: "$65",
+                totalQualifiedLeadPrice: "$3,900",
+                totalPlatformPrice: "$699",
+                finalPrice: "$4,599",
+                isPopular: true
+            },
             {
                 planId: 4,
                 planName: "Qualified 80",
@@ -55,6 +56,7 @@ let pricingData = [
         pricePoint: "$200K-$300K",
         priceId: 2,
         active: false,
+        showEnterprise: true,
         plans: [
             {
                 planId: 5,
@@ -76,16 +78,16 @@ let pricingData = [
                 finalPrice: "$3,679",
                 isPopular: true
             },
-            {
-                planId: 7,
-                planName: "Qualified 60",
-                leadsPerMonth: "60",
-                pricePerLiveTransfer: "$74",
-                totalQualifiedLeadPrice: "$4,440",
-                totalPlatformPrice: "$699",
-                finalPrice: "$5,139",
-                isPopular: false
-            },
+            // {
+            //     planId: 7,
+            //     planName: "Qualified 60",
+            //     leadsPerMonth: "60",
+            //     pricePerLiveTransfer: "$74",
+            //     totalQualifiedLeadPrice: "$4,440",
+            //     totalPlatformPrice: "$699",
+            //     finalPrice: "$5,139",
+            //     isPopular: false
+            // },
             {
                 planId: 8,
                 planName: "Qualified 80",
@@ -102,6 +104,7 @@ let pricingData = [
         pricePoint: "$300K-$400K",
         priceId: 3,
         active: true,
+        showEnterprise: true,
         plans: [
             {
                 planId: 9,
@@ -139,6 +142,7 @@ let pricingData = [
         pricePoint: "$400K-$500K",
         priceId: 4,
         active: false,
+        showEnterprise: true,
         plans: [
             {
                 planId: 13,
@@ -160,16 +164,16 @@ let pricingData = [
                 finalPrice: "$4,839",
                 isPopular: true
             },
-            {
-                planId: 15,
-                planName: "Qualified 60",
-                leadsPerMonth: "60",
-                pricePerLiveTransfer: "$102",
-                totalQualifiedLeadPrice: "$6,120",
-                totalPlatformPrice: "$699",
-                finalPrice: "$6,819",
-                isPopular: false
-            },
+            // {
+            //     planId: 15,
+            //     planName: "Qualified 60",
+            //     leadsPerMonth: "60",
+            //     pricePerLiveTransfer: "$102",
+            //     totalQualifiedLeadPrice: "$6,120",
+            //     totalPlatformPrice: "$699",
+            //     finalPrice: "$6,819",
+            //     isPopular: false
+            // },
             {
                 planId: 16,
                 planName: "Qualified 80",
@@ -186,6 +190,7 @@ let pricingData = [
         pricePoint: "$500K+",
         priceId: 5,
         active: false,
+        showEnterprise: true,
         plans: [
             {
                 planId: 17,
@@ -206,16 +211,6 @@ let pricingData = [
                 totalPlatformPrice: "$599",
                 finalPrice: "$5,599",
                 isPopular: false
-            },
-            {
-                planId: 19,
-                planName: "Qualified 60",
-                leadsPerMonth: "60",
-                pricePerLiveTransfer: "$121",
-                totalQualifiedLeadPrice: "$7,260",
-                totalPlatformPrice: "$699",
-                finalPrice: "$7,959",
-                isPopular: true
             },
             {
                 planId: 20,
@@ -250,9 +245,11 @@ export default function Pricing() {
     }
 
     let selectedPlans = [];
+    let showEnterprise = false;
     plans.forEach(item => {
         if(item.active) {
             selectedPlans = item.plans;
+            showEnterprise = item.showEnterprise;
         }
     });
 
@@ -269,7 +266,7 @@ export default function Pricing() {
     return (
         <div className="container">
             <PricingList list={plans} changeActive={changeActive} />
-            <PricingCardList list={selectedPlans} showPricingModal={showPricingModal} />
+            <PricingCardList showEnterprise={showEnterprise} list={selectedPlans} showPricingModal={showPricingModal} />
             <PricingForm showModal={showModal} selectedPlan={plan} hidePricingModal={hidePricingModal} />
         </div>
     )
