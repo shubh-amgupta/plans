@@ -1,0 +1,257 @@
+@import "./colors";
+
+.list {
+    display: flex;
+
+    @media (max-width: 667px) {
+        flex-direction: column;
+    }
+
+    &__item:first-child {
+        border: none;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    &__item:last-child {
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+    
+    &__item {
+        padding: 2.4rem;
+        text-align: center;
+        font-size: 1.8rem;
+        flex: 1;
+        background-color: #f5f5f5;
+        color: 252E40;
+        border-left: 1px solid rgb(220, 220, 220);
+        cursor: pointer;
+
+        &--active {
+            background-color: #252E40;
+            color: white;
+
+        }
+        
+        &:hover {
+            background-color: #efefef;
+        }
+
+        &--active:hover {
+            background-color: #252E40;
+        }
+    }
+
+}
+
+.card {
+    font-size: 1.6rem;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: 150ms;
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr) );
+        grid-row-gap: 2rem;
+        grid-column-gap: 2rem;
+        grid-template-rows: 54rem;
+        justify-content: space-between;
+        margin-top: 3rem;
+        align-items: flex-end;
+        height: 52rem;
+
+        @media (max-width: 667px) {
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr) );
+        }
+    }
+
+    &__heading {
+        background-color: #252E40;
+        padding: 1.5rem;
+    }
+
+    &__enterprise {
+        font-size: 2.4rem;
+        padding: 14.7rem 2rem;
+        text-align: center;
+        color: #252E40;
+        background-color: #f5f5f5;
+    }
+
+    &__info {
+        padding: 0 6rem;
+        color: #252E40;
+
+        & > div:not(:last-child) {
+            border-bottom: 1px dashed #ccc;
+        }
+
+        & > div {
+            padding: 2rem;
+        }
+        
+        &--main {
+            font-size: 3.4rem;
+            margin: .5rem 0;
+        }
+    
+        &--sub {
+            font-size: 1.4rem;
+            margin: .5rem 0;
+        }
+
+        &--mid {
+            font-size: 1.8rem;
+            margin: .5rem 0;
+        }
+
+        &--active {
+            background-color: #f5f5f5;
+        }
+    }
+
+    &__price {
+        padding: 2rem;
+        background-color: #252E40;
+        color: white;
+        font-size: 2.2rem;
+    }
+
+    &__cta {
+        padding: 1.5rem;
+        color: #F97252;
+        width: 100%;
+        background-color: white;
+        border: 1px solid #F97252;
+        border-radius: 4px;
+        font-size: 1.8rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        outline: none;
+
+        &:active {
+            background-color: rgb(253, 96, 61);
+        }
+
+        &--active {
+            background-color: #F97252;
+            color: white;
+        }
+    }
+
+    &__popular {
+        padding: 1.5rem;
+        font-size: 1.8rem;
+        background-color: #F97252;
+        color: white;
+    }
+
+    &:hover &__info {
+        background-color: #f5f5f5;
+    }
+
+    &:hover &__cta {
+        background-color: #F97252;
+        color: white;
+    }
+
+    &--active &__info {
+        background-color: #f5f5f5;
+    }
+
+    &--active &__cta {
+        background-color: #F97252;
+        color: white;
+    }
+
+}
+
+.form {
+
+    height: 60vh;
+
+    &__plan {
+        font-size: 2rem;
+        font-weight: 400;
+        margin: 1rem;
+
+        & > span {
+            font-weight: 700;
+        }
+    }
+
+    &__heading {
+        font-size: 3rem;
+        text-align: center;
+        border-bottom: 1px solid #252E40;
+        padding-bottom: 1rem;
+        margin: 1rem;
+
+        & span {
+            float: right;
+            cursor: pointer;
+
+            &:hover {
+                color: rgb(43, 59, 90);
+            }
+        }
+    }
+
+    &__control {
+        display: flex;
+
+        @media (max-width: 667px) {
+            flex-direction: column;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        flex: 1;
+
+        &--modified {
+            flex-direction: row;
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        margin-bottom: .5rem;
+    }
+
+    &__label--checkbox {
+        font-size: 1.5rem;
+        margin: 1rem;
+        cursor: pointer;
+    }
+
+    &__input {
+        font-size: 1.8rem;
+        border-radius: 2px;
+        border: 1px solid #aaa;
+        outline: none;
+        padding: .6rem;
+    }
+
+    &__cta {
+        padding: 1rem 1.5rem;
+        color: white;
+        background-color: #F97252;
+        font-size: 1.6rem;
+        margin: 1rem;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        transition: 150ms;
+
+        &:hover {
+            background-color: rgb(255, 83, 44);
+        }
+    }
+
+}
